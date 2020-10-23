@@ -41,7 +41,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         Dictionary<Guid, GameObject> m_PrefabsDictionary = new Dictionary<Guid, GameObject>();
         Dictionary<Guid, GameObject> m_Instantiated = new Dictionary<Guid, GameObject>();
         ARTrackedImageManager m_TrackedImageManager;
-
+    
         [SerializeField]
         [Tooltip("Reference Image Library")]
         XRReferenceImageLibrary m_ImageLibrary;
@@ -95,7 +95,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 // Give the initial image a reasonable default scale
                 var minLocalScalar = Mathf.Min(trackedImage.size.x, trackedImage.size.y) / 2;
                 trackedImage.transform.localScale = new Vector3(minLocalScalar, minLocalScalar, minLocalScalar);
-                AssignPrefab(trackedImage);
+                //AssignPrefab(trackedImage);
             }
         }
 

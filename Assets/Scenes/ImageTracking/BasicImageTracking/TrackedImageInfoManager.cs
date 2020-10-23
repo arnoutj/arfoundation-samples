@@ -17,6 +17,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [SerializeField]
         [Tooltip("The camera to set on the world space UI canvas for each instantiated image info.")]
         Camera m_WorldSpaceCanvasCamera;
+        public GameObject cube;
+        ARSessionOrigin arSessionOrigin;
 
         /// <summary>
         /// The prefab has a world space UI canvas,
@@ -47,6 +49,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         void Awake()
         {
             m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+            arSessionOrigin = GetComponent<ARSessionOrigin>();
         }
 
         void OnEnable()
@@ -85,6 +88,8 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
                 // The image extents is only valid when the image is being tracked
                 trackedImage.transform.localScale = new Vector3(trackedImage.size.x, 1f, trackedImage.size.y);
+                
+                arSessionOrigin.MakeContentAppearAt(cube.transform, trackedImage.transform.position, trackedImage.transform.localRotation);
 
                 // Set the texture
                 var material = planeGo.GetComponentInChildren<MeshRenderer>().material;
